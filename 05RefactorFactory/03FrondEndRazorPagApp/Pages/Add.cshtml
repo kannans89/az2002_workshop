@@ -1,0 +1,31 @@
+﻿@page
+@model _03FrondEndRazorPagApp.Pages.AddModel
+
+
+<form method="post">
+	@* 	The FruitModels.id is here so the full data model is represented on the page.
+	The database behind the API will assign the id. *@
+	<input hidden asp-for="Product.Id" />
+	<div class="border p-3 mt-4" style="width:50%">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Add Product</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Product.Name" class="h5"></label><br />
+			@* Empty text box for the name of the fruit to be added. *@
+			<input type="text" asp-for="Product.Name" />
+			<span asp-validation-for="Product.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Product.IsAvailable" class="h5"></label><br />
+			@* Render the true/false instock state from the record in an editable checkbox. *@
+			<input type="checkbox" asp-for="Product.IsAvailable" style="width:20px; height:20px" />
+			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if it's available.</label>
+			<span asp-validation-for="Product.IsAvailable" class="text-danger"></span>
+		</div>
+		@* Submit the addition or return to the Index page if the Add is cancelled.*@
+		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+	</div>
+</form>

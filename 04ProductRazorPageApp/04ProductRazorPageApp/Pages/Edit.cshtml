@@ -1,0 +1,32 @@
+﻿@page
+@model _04ProductRazorPageApp.Pages.EditModel
+@{
+}
+
+<form method="post">
+	@* 	The id for the data record is hidden because it needs to be available to the
+	code-behind processing, but it's not displayed. *@
+	<input hidden asp-for="Product.Id" />
+	<div class="border p-3 mt-4" style="width:50%">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Edit Product</h2>
+			<hr />
+		</div>
+		<div class="mb-3">
+			<label asp-for="Product.Name" class="h5"></label><br />
+			@* Render the current name of the fruit in an editable text box. *@
+			<input type="text" asp-for="Product.Name" />
+			<span asp-validation-for="Product.Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Product.IsAvailable" class="h5"></label><br />
+			@* Render the true/false instock state from the record in an editable checkbox. *@
+			<input type="checkbox" asp-for="Product.IsAvailable" style="width:20px; height:20px" />
+			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
+			<span asp-validation-for="Product.IsAvailable" class="text-danger"></span>
+		</div>
+		@* Submit the changes or return to the Index page if the edit is cancelled.*@
+		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+	</div>
+</form>
